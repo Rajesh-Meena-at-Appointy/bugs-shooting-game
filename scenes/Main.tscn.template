@@ -1,0 +1,33 @@
+# Scene Tree Setup Instructions
+# Create Main.tscn with the following structure:
+
+# 1. Main (Node3D) - Root scene
+#    Position: (0, 0, 0)
+
+# 2. World (Node3D) - Parent for all world objects
+#    - Ground (StaticBody3D)
+#      - MeshInstance3D: QuadMesh, Scale: (20, 1, 20), Material: Green/Grass color
+#      - CollisionShape3D: BoxShape3D, Size: (20, 0.1, 20)
+#    - Food (Area3D) - Target for bugs
+#      Position: (0, 0.5, -5)
+#      - MeshInstance3D: SphereMesh, Material: Bright orange/yellow
+#      - CollisionShape3D: SphereShape3D
+
+# 3. Player (CharacterBody3D)
+#    Position: (0, 1, 5)
+#    - MeshInstance3D: CapsuleMesh, Material: Blue color
+#    - CollisionShape3D: CapsuleShape3D
+#    - CameraPivot (Node3D)
+#      Position: (0, 0.5, 0)
+#      - Camera3D: Position: (0, 0, 0.3), FOV: 75
+
+# 4. BugSpawner (Node3D)
+#    - SpawnPoints (Node3D)
+#      - SpawnPoint1: Position: (-8, 1, -8)
+#      - SpawnPoint2: Position: (8, 1, -8)
+#      - SpawnPoint3: Position: (-8, 1, 8)
+#      - SpawnPoint4: Position: (8, 1, 8)
+
+# 5. UI (CanvasLayer)
+#    - Layer: 1
+#    - All UI elements as children

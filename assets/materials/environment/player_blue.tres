@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "PlayerBlueMaterial"
+albedo_color = Color(0.2, 0.6, 1.0, 1)
+metallic = 0.3
+roughness = 0.6
+rim_enabled = true
+rim = 0.3
+rim_tint = 0.2

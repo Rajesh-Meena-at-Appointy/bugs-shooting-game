@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbdb65v0a2y84"]
+
+[ext_resource type="PackedScene" uid="uid://c3m7n8pap0qr1" path="res://scenes/Bug.tscn" id="1_base_bug"]
+[ext_resource type="Script" path="res://scripts/Enemies/BugTypes/TankBug.gd" id="2_tank_bug_script"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tank_bug"]
+albedo_color = Color(0.6, 0.1, 0.1, 1.0)
+emission = Color(0.6, 0.1, 0.1, 0.1)
+metallic = 0.8
+roughness = 0.2
+
+[node name="TankBug" instance=ExtResource("1_base_bug")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("2_tank_bug_script")
+
+[node name="MeshInstance3D" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tank_bug")
+
+[node name="ArmorPlating" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)

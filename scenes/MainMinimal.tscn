@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5sou7bm1gcv1"]
+
+[ext_resource type="Script" path="res://scripts/Player/PlayerMinimal.gd" id="1_player_minimal"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+height = 2.0
+radius = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_player"]
+height = 2.0
+radius = 0.4
+
+[ext_resource type="Material" path="res://assets/materials/environment/player_blue.tres" id="player_material"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ground"]
+size = Vector3(20, 1, 20)
+
+[ext_resource type="Material" path="res://assets/materials/environment/grass.tres" id="grass_material"]
+[ext_resource type="Script" path="res://scripts/SimpleBug.gd" id="SimpleBug_script"]
+[ext_resource type="Material" path="res://assets/materials/bugs/bug_red.tres" id="bug_material"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bug"]
+radius = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_bug"]
+radius = 0.5
+height = 1.0
+
+[node name="MainMinimal" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_player_minimal")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_player")
+material_override = ExtResource("player_material")
+
+[node name="CameraPivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 3)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_ground")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_ground")
+material_override = ExtResource("grass_material")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 10, 0)
+light_energy = 1.0
+shadow_enabled = true
+
+[node name="Bug1" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 5)
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("SimpleBug_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bug1"]
+shape = SubResource("SphereShape3D_bug")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bug1"]
+mesh = SubResource("SphereMesh_bug")
+material_override = ExtResource("bug_material")
+
+[node name="Bug2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 5)
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("SimpleBug_script")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bug2"]
+shape = SubResource("SphereShape3D_bug")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Bug2"]
+mesh = SubResource("SphereMesh_bug")
+material_override = ExtResource("bug_material")

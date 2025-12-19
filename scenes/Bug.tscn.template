@@ -1,0 +1,25 @@
+# Bug Scene Template
+# Create Bug.tscn with this structure:
+
+Bug (CharacterBody3D) - Attach Bug.gd script
+├── MeshInstance3D
+│   └── Mesh: SphereMesh (Radius: 0.3, Height: 0.6)
+│   └── Material: Bright colors (Red, Blue, Green, Yellow)
+├── CollisionShape3D
+│   └── Shape: SphereShape3D (Radius: 0.3)
+└── FoodDetectionArea (Area3D) - Optional
+    ├── MeshInstance3D (Invisible, for debugging)
+    └── CollisionShape3D
+        └── Shape: SphereShape3D (Radius: 0.5)
+
+# Settings:
+# - Collision Layer: 2 (Bugs)
+# - Collision Mask: 1 (World)
+# - Add to group: "bugs"
+
+# Materials suggestion:
+# Create bright StandardMaterial3D:
+# - Albedo: Bright colors (Red, Orange, Yellow, Green, Blue, Purple)
+# - Emission: Slight glow
+# - Roughness: 0.3
+# - Metallic: 0.1

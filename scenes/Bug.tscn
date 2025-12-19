@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3m7n8pap0qr1"]
+
+[ext_resource type="Script" path="res://scripts/Enemies/Bug.gd" id="1_bug_script"]
+[ext_resource type="Script" path="res://scripts/Enemies/BugAI.gd" id="2_bug_ai"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bug_collision"]
+radius = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_bug_body"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bug_material"]
+albedo_color = Color(1.0, 0.2, 0.2, 1.0)
+emission = Color(1.0, 0.2, 0.2, 0.1)
+metallic = 0.1
+roughness = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_food_detection"]
+radius = 0.6
+
+[node name="Bug" type="CharacterBody3D" groups=["bugs"]]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_bug_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_bug_collision")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_bug_body")
+surface_material_override/0 = SubResource("StandardMaterial3D_bug_material")
+
+[node name="BugAI" type="Node" parent="."]
+script = ExtResource("2_bug_ai")
+
+[node name="FoodDetector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodDetector"]
+shape = SubResource("SphereShape3D_food_detection")
+
+[connection signal="body_entered" from="FoodDetector" to="." method="_on_food_detector_body_entered"]

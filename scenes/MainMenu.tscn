@@ -1,0 +1,165 @@
+[gd_scene load_steps=4 format=3 uid="uid://i1jov2jsn7lg"]
+
+[ext_resource type="Script" path="res://scripts/UI/MainMenuUI.gd" id="1_main_menu_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.2, 0.4, 0.8, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.3, 0.5, 0.9, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_main_menu_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.3, 0.1, 1.0)
+
+[node name="TitleContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 100.0
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="TitleContainer"]
+layout_mode = 2
+text = "🐛 BUGS SHOOTING GAME 🔫"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SubtitleLabel" type="Label" parent="TitleContainer"]
+layout_mode = 2
+text = "Defend the Garden!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 150.0
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "🎮 PLAY"
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "⚙️ SETTINGS"
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+
+[node name="AchievementsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "🏆 ACHIEVEMENTS"
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "❌ QUIT"
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+
+[node name="HighScoreContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = -20.0
+
+[node name="HighScoreLabel" type="Label" parent="HighScoreContainer"]
+layout_mode = 2
+text = "High Score: 0"
+
+[node name="StatsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="StatsLabel" type="Label" parent="StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bugs Killed: 0 | Games Played: 0 | Best Wave: 1"
+horizontal_alignment = 2
+
+[node name="BackgroundBugs" type="Node2D" parent="."]
+
+[node name="SettingsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+
+[node name="AchievementsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AchievementsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="AchievementsList" type="VBoxContainer" parent="AchievementsPanel/ScrollContainer"]
+layout_mode = 2

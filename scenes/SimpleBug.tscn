@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Material" path="res://assets/materials/bugs/bug_red.tres" id="bug_material"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bug"]
+radius = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_bug"]
+radius = 0.5
+height = 1.0
+
+[ext_resource type="Script" path="res://scripts/SimpleBug.gd" id="SimpleBug_script"]
+
+[node name="SimpleBug" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("SimpleBug_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_bug")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_bug")
+material_override = ExtResource("bug_material")
+
+[node name="Timer" type="Timer"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "BugRedMaterial"
+albedo_color = Color(0.8, 0.2, 0.2, 1)
+metallic = 0.3
+roughness = 0.7
+emission_enabled = true
+emission = Color(0.6, 0.1, 0.1, 1)
+emission_energy = 0.5
