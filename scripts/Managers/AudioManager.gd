@@ -33,10 +33,59 @@ func play_bug_hit_sound():
         # Create a hit sound
         create_beep_sound(bug_hit_sound, 400, 0.2)
 
+func play_ui_click_sound():
+    # Create a UI click sound using the shoot sound player
+    if shoot_sound:
+        shoot_sound.volume_db = linear_to_db(sfx_volume * master_volume)
+        # Create a short click sound
+        create_beep_sound(shoot_sound, 600, 0.05)
+
 func play_game_over_sound():
     if game_over_sound:
         game_over_sound.volume_db = linear_to_db(sfx_volume * master_volume)
-        game_over_sound.play()
+        create_beep_sound(game_over_sound, 200, 1.0)
+
+func play_player_hurt_sound():
+    if get_node_or_null("PlayerHurtSound"):
+        var player = $PlayerHurtSound
+        player.volume_db = linear_to_db(sfx_volume * master_volume)
+        create_beep_sound(player, 300, 0.3)
+
+func play_player_death_sound():
+    if get_node_or_null("PlayerDeathSound"):
+        var player = $PlayerDeathSound
+        player.volume_db = linear_to_db(sfx_volume * master_volume)
+        create_beep_sound(player, 150, 2.0)
+
+func play_tank_charge_sound():
+    if bug_hit_sound:
+        bug_hit_sound.volume_db = linear_to_db(sfx_volume * master_volume)
+        create_beep_sound(bug_hit_sound, 100, 0.5)
+
+func play_deflect_sound():
+    if shoot_sound:
+        shoot_sound.volume_db = linear_to_db(sfx_volume * master_volume)
+        create_beep_sound(shoot_sound, 900, 0.1)
+
+func play_celebration_sound():
+    if bg_music:
+        bg_music.volume_db = linear_to_db(sfx_volume * master_volume)
+        create_beep_sound(bg_music, 1000, 0.5)
+
+func play_sneaky_vanish_sound():
+    if bug_hit_sound:
+        bug_hit_sound.volume_db = linear_to_db(sfx_volume * master_volume)
+        create_beep_sound(bug_hit_sound, 500, 0.2)
+
+func play_sneaky_appear_sound():
+    if bug_hit_sound:
+        bug_hit_sound.volume_db = linear_to_db(sfx_volume * master_volume)
+        create_beep_sound(bug_hit_sound, 700, 0.2)
+
+func play_decoy_hit_sound():
+    if shoot_sound:
+        shoot_sound.volume_db = linear_to_db(sfx_volume * master_volume)
+        create_beep_sound(shoot_sound, 450, 0.1)
 
 func stop_music():
     if bg_music:
