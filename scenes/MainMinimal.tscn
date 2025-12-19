@@ -21,6 +21,7 @@ size = Vector3(20, 1, 20)
 [ext_resource type="Material" path="res://assets/materials/environment/grass.tres" id="grass_material"]
 [ext_resource type="Script" path="res://scripts/SimpleBug.gd" id="SimpleBug_script"]
 [ext_resource type="Material" path="res://assets/materials/bugs/bug_red.tres" id="bug_material"]
+[ext_resource type="Environment" path="res://assets/materials/environment/sky_material.tres" id="sky_environment"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bug"]
 radius = 0.5
@@ -30,6 +31,7 @@ radius = 0.5
 height = 1.0
 
 [node name="MainMinimal" type="Node3D"]
+environment = ExtResource("sky_environment")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

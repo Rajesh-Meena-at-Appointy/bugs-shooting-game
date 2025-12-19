@@ -55,6 +55,10 @@ func shoot():
     
     var result = space_state.intersect_ray(query)
     
+    # Play shoot sound
+    if AudioManager:
+        AudioManager.play_shoot_sound()
+    
     if result:
         var hit_object = result.get("collider")
         if hit_object and hit_object.has_method("hit"):

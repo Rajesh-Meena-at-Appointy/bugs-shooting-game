@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/Managers/AudioManager.gd" id="AudioManager_script"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("AudioManager_script")
+
+[node name="BGMusic" type="AudioStreamPlayer"]
+stream = null
+
+[node name="ShootSound" type="AudioStreamPlayer"]
+stream = null
+
+[node name="BugHitSound" type="AudioStreamPlayer"]
+stream = null
+
+[node name="PlayerHurtSound" type="AudioStreamPlayer"]
+stream = null
+
+[node name="PlayerDeathSound" type="AudioStreamPlayer"]
+stream = null
+
+[node name="GameOverSound" type="AudioStreamPlayer"]
+stream = null

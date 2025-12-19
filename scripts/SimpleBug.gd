@@ -26,7 +26,24 @@ func _physics_process(delta):
 
 func hit():
     print("Bug hit!")
-    queue_free()
+    
+    # Play hit sound
+    if AudioManager:
+        AudioManager.play_bug_hit_sound()
+    
+    # Create hit effect
+    var hit_effect = preload("res://effects/HitEffect.tscn").instantiate()
+    get_tree().current_scene.add_child(hit_effect)
+    hit_effect.global_position = global_position
+    
+    # Flash effect
+    var tween = create_tween()
+    modulate = Color.WHITE
+    tween.tween_property(self, "modulate", Color.RED, 0.1)
+    tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+    
+    # Destroy after effect
+    tween.tween_callback(queue_free)
 
 func _on_timer_timeout():
     # Simple floating movement

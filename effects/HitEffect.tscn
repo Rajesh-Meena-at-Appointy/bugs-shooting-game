@@ -2,11 +2,12 @@
 
 [sub_resource type="ParticleProcessMaterial" id="1"]
 direction = Vector3(0, 1, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 5.0
+spread = 45.0
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
 gravity = Vector3(0, -9.8, 0)
-scale_min = 0.5
-scale_max = 1.5
+scale_min = 0.3
+scale_max = 2.0
 
 [sub_resource type="StandardMaterial3D" id="2"]
 albedo_color = Color(1, 0.5, 0, 1)
