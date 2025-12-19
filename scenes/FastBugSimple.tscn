@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/FastBugSimple.gd" id="FastBug_script"]
+[ext_resource type="Material" path="res://assets/materials/bugs/bug_cyan.tres" id="bug_cyan_material"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fastbug"]
+radius = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_fastbug"]
+radius = 0.4
+height = 0.8
+
+[node name="FastBugSimple" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("FastBug_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_fastbug")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_fastbug")
+material_override = ExtResource("bug_cyan_material")

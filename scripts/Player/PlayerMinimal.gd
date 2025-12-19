@@ -10,9 +10,19 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 # Camera reference
 @onready var camera = $CameraPivot/Camera3D
 
+# Touch controls
+var touch_controls = null
+var touch_movement = Vector2.ZERO
+
 func _ready():
     add_to_group("player")
     print("Player ready and working!")
+    
+    # Find touch controls
+    touch_controls = get_tree().get_first_node_in_group("touch_controls")
+    if touch_controls:
+        touch_controls.movement_input.connect(_on_touch_movement)
+        touch_controls.shoot_pressed.connect(_on_touch_shoot)
 
 func _physics_process(delta):
     # Add the gravity
@@ -25,6 +35,11 @@ func _physics_process(delta):
 
     # Get the input direction and handle the movement/deceleration
     var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+    
+    # Add touch input
+    if touch_movement != Vector2.ZERO:
+        input_dir = touch_movement
+    
     if input_dir != Vector2.ZERO:
         velocity.x = input_dir.x * SPEED
         velocity.z = input_dir.y * SPEED
@@ -68,3 +83,9 @@ func shoot():
             print("Hit something else:", hit_object)
     else:
         print("Shot fired, no hit")
+
+func _on_touch_movement(direction: Vector2):
+    touch_movement = direction
+
+func _on_touch_shoot():
+    shoot()

@@ -22,6 +22,11 @@ size = Vector3(20, 1, 20)
 [ext_resource type="Script" path="res://scripts/SimpleBug.gd" id="SimpleBug_script"]
 [ext_resource type="Material" path="res://assets/materials/bugs/bug_red.tres" id="bug_material"]
 [ext_resource type="Environment" path="res://assets/materials/environment/sky_material.tres" id="sky_environment"]
+[ext_resource type="Script" path="res://scripts/Managers/GameManagerSimple.gd" id="GameManagerSimple_script"]
+[ext_resource type="PackedScene" path="res://scenes/SimpleHUD.tscn" id="SimpleHUD_scene"]
+[ext_resource type="Script" path="res://scripts/SimpleBugSpawner.gd" id="SimpleBugSpawner_script"]
+[ext_resource type="Script" path="res://scripts/PowerUpSpawner.gd" id="PowerUpSpawner_script"]
+[ext_resource type="PackedScene" path="res://scenes/SimpleTouchControls.tscn" id="SimpleTouchControls_scene"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bug"]
 radius = 0.5
@@ -93,3 +98,16 @@ shape = SubResource("SphereShape3D_bug")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Bug2"]
 mesh = SubResource("SphereMesh_bug")
 material_override = ExtResource("bug_material")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("GameManagerSimple_script")
+
+[node name="SimpleHUD" parent="." instance=ExtResource("SimpleHUD_scene")]
+
+[node name="BugSpawner" type="Node3D" parent="."]
+script = ExtResource("SimpleBugSpawner_script")
+
+[node name="PowerUpSpawner" type="Node3D" parent="."]
+script = ExtResource("PowerUpSpawner_script")
+
+[node name="SimpleTouchControls" parent="." instance=ExtResource("SimpleTouchControls_scene")]

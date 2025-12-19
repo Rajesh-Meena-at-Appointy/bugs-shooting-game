@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Bugs Shooting Game"
 config/description="A fun 3D shooting game for kids - defend the garden from cute bugs!"
-run/main_scene="uid://b4j8xqwxo7dqg"
+run/main_scene="res://scenes/SimpleMainMenu.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
